@@ -22,6 +22,7 @@ function limitRange(value) {
     return value;
 }
 
+// Reset zawartości canvasa przed nadpisaniem go nowym obrazem
 function clear()
 {
     context.drawImage(imgC, x, y);

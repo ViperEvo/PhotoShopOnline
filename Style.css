@@ -21,12 +21,23 @@ body
     flex-direction: row;
     border-radius: 20px;
     background:	rgb(70, 70, 70);
-    
+    width: 800px;
+    margin: 20px;
+    padding: 20px;
 }
 .controlPanel
 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 20px 60px;
+    margin: 0px 60px;
+}
+.color
+{
+    margin: 0 10px;
+}
+#brushSize
+{
+    position: relative;
+    left: 30%;
 }
