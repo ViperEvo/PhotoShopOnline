@@ -27,7 +27,7 @@ contrast.addEventListener('change', function(){
     
     let imgData = context.getImageData(x, y, imgC.width, imgC.height);
     let data = imgData.data;
-    let factor = (259.0 * (parseInt(contrast.value) + 255.0)) / (255.0 * (259.0 - parseInt(contrast.value)));
+    let factor = (255.0 * (parseInt(contrast.value) + 255.0)) / (255.0 * (255.0 - parseInt(contrast.value)));
 
     for (let i = 0; i < data.length; i += 4)
     {
@@ -36,6 +36,18 @@ contrast.addEventListener('change', function(){
         data[i+2] = limitRange(factor * (data[i+2] - 128.0) + 128.0);
     }
     context.putImageData(imgData, x, y);
-    saturation.value = 100;
-    brightness.value = 0;
+})
+
+// Funkcja zmiany Jasności
+brightness.addEventListener('change', function(){
+    
+    let imgData = context.getImageData(x, y, imgC.width, imgC.height);
+    let data = imgData.data;
+    for (let i = 0; i < data.length; i += 4)
+    {
+        data[i] += 255 * (brightness.value / 100)
+        data[i+1] += 255 * (brightness.value / 100)
+        data[i+2] += 255 * (brightness.value / 100)
+    }
+    context.putImageData(imgData, x, y);
 })
