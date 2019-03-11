@@ -9,10 +9,30 @@
     <title>PhotoShopOnline</title>
 </head>
 <body>
-        <canvas id="Canvas" width="1200px" height="500px" ></canvas>
-    <div id="main">
-        
+    <canvas id="Canvas" width="1200px" height="500px" ></canvas>
 
+    <div id="main">
+        <div class="controls">
+            <div class="controlPanel">
+                <p>Contrast</p>
+                <div class="controlSlider">
+                    <input type="range" min="-50" max="50" class = "Sliders" id="contrastSlider">
+                </div>
+            </div>
+            <div class="controlPanel">
+                <p>Saturation</p>
+                <div class="controlSlider">
+                    <input type="range" min="-50" max="50" class = "Sliders" id="saturationSlider">
+                </div>
+            </div>
+            <div class="controlPanel">
+                <p>Brightness</p>
+                <div class="controlSlider">
+                    <input type="range" min="-50" max="50" class = "Sliders" id="brightnessSlider">
+                </div>
+            </div>
+            
+        </div>
     </div>
     <script src="Script.js"></script>  
 </body>
