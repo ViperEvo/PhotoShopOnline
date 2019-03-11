@@ -1,0 +1,10 @@
+body 
+{
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    display: flex;
+    background: rgb(230, 230, 230);
+    color: rgb(230, 230, 230);
+    font-family: 'Montserrat', sans-serif;
+}
