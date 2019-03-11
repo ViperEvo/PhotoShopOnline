@@ -22,9 +22,13 @@ function limitRange(value) {
     return value;
 }
 
+function clear()
+{
+    context.drawImage(imgC, x, y);
+}
 // Funkcja zmiany Kontrastu
 contrast.addEventListener('change', function(){
-    
+    clear();    
     let imgData = context.getImageData(x, y, imgC.width, imgC.height);
     let data = imgData.data;
     let factor = (255.0 * (parseInt(contrast.value) + 255.0)) / (255.0 * (255.0 - parseInt(contrast.value)));
@@ -40,7 +44,7 @@ contrast.addEventListener('change', function(){
 
 // Funkcja zmiany Jasności
 brightness.addEventListener('change', function(){
-    
+    clear();  
     let imgData = context.getImageData(x, y, imgC.width, imgC.height);
     let data = imgData.data;
     for (let i = 0; i < data.length; i += 4)
@@ -54,10 +58,20 @@ brightness.addEventListener('change', function(){
 
 // Funkcja zmiany Nasycenia
 saturation.addEventListener('change', function(){
-    
+    clear();  
     let imgData = context.getImageData(x, y, imgC.width, imgC.height);
     let data = imgData.data;
-    
+    for (let i = 0; i < data.length; i += 4)
+    {
+        let color = [data[i], data[i+1], data[i+2]]
+        let hsv = RGBtoHSV(color);
+        hsv[1] *= parseInt(saturation.value)/100;
+        let rgb = HSVtoRGB(hsv);
+        data[i] = rgb[0];
+        data[i+1] = rgb[1];
+        data[i+2] = rgb[2];
+    }
+    context.putImageData(imgData, x, y);
 })
 
 // Zamiana RGB na HSV
