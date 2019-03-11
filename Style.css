@@ -24,6 +24,7 @@ body
     width: 800px;
     margin: 20px;
     padding: 20px;
+    align-items: center;
 }
 .controlPanel
 {
@@ -32,9 +33,15 @@ body
     align-items: center;
     margin: 0px 60px;
 }
+.Sliders
+{
+    cursor: pointer;
+}
 .color
 {
+    display: flex;
     margin: 0 10px;
+    cursor: pointer;
 }
 #brushSize
 {

@@ -41,6 +41,8 @@ contrast.addEventListener('change', function(){
         data[i+2] = limitRange(factor * (data[i+2] - 128.0) + 128.0);
     }
     context.putImageData(imgData, x, y);
+    saturation.value = 100;
+    brightness.value = 0;
 })
 
 // Funkcja zmiany Jasności
@@ -55,6 +57,8 @@ brightness.addEventListener('change', function(){
         data[i+2] += 255 * (brightness.value / 100)
     }
     context.putImageData(imgData, x, y);
+    saturation.value = 100;
+    contrast.value = 0;
 })
 
 // Funkcja zmiany Nasycenia
@@ -73,6 +77,8 @@ saturation.addEventListener('change', function(){
         data[i+2] = rgb[2];
     }
     context.putImageData(imgData, x, y);
+    contrast.value = 0;
+    brightness.value = 0;
 })
 
 // Zamiana RGB na HSV
@@ -158,3 +164,16 @@ function HSVtoRGB(color) {
     }
     return [r,g,b];
 }
+
+// Rysowanie
+
+canvas.addEventListener('mouseUp', mouseUp);
+canvas.addEventListener('mouseDown', mouseDown);
+
+
+// Rozmiar pędzla
+function brushSize()
+{
+    return parseInt(document.getElementById('brushSize').value);
+}
+
