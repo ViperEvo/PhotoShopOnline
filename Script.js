@@ -167,13 +167,67 @@ function HSVtoRGB(color) {
 
 // Rysowanie
 
-canvas.addEventListener('mouseUp', mouseUp);
-canvas.addEventListener('mouseDown', mouseDown);
+let mousedown = false;
+canvas.addEventListener('mouseup', mouseUp);
+canvas.addEventListener('mousedown', mouseDown);
+canvas.addEventListener('mousemove', function(e) {
+    let mousePosition = getMousePosition(canvas, e);
+    let x = mousePosition.x;
+    let y = mousePosition.y;
+    draw(canvas, x, y);
+});
 
+function mouseDown() {
+    mousedown = true;
+}
+
+function mouseUp() {
+    mousedown = false;
+}
+
+// Pozycja wskaźnika myszy
+function getMousePosition(canvas, e) {
+    let pos = canvas.getBoundingClientRect();
+    return { x: e.clientX - pos.left, y: e.clientY - pos.top};
+}
+
+// Rysowanie po Canvasie
+function draw(canvas, x, y){
+    if (mousedown == true)
+    {
+        let setBrushSize = brushSize()
+        context.fillRect(x, y, setBrushSize, setBrushSize);
+        getColor();
+        context.stroke();
+    }
+}
 
 // Rozmiar pędzla
-function brushSize()
-{
+function brushSize(){
     return parseInt(document.getElementById('brushSize').value);
 }
 
+// Ustawienie koloru rysowania
+function getColor(){
+
+    if (document.getElementById('Black').checked)
+    {
+        context.fillStyle = "black";
+    }
+    if (document.getElementById('Red').checked)
+    {
+        context.fillStyle = "red";
+    }
+    if (document.getElementById('Blue').checked)
+    {
+        context.fillStyle = "blue";
+    }
+    if (document.getElementById('Yellow').checked)
+    {
+        context.fillStyle = "yellow";
+    }
+    if (document.getElementById('Green').checked)
+    {
+        context.fillStyle = "green";
+    }
+}

@@ -48,3 +48,18 @@ body
     position: relative;
     left: 30%;
 }
+#black {
+    color: black;
+}
+#red {
+    color: red;
+}
+#blue {
+    color: blue;
+}
+#yellow {
+    color: yellow;
+}
+#green {
+    color: green;
+}
